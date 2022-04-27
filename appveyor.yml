@@ -61,7 +61,7 @@ build_script:
   - ps: git clone --depth=1 https://chromium.googlesource.com/chromium/tools/depot_tools.git  
   - ps: $env:PATH="$pwd\depot_tools;$env:PATH" 
   - ps: Move-Item $env:APPVEYOR_BUILD_FOLDER -Destination src\electron
-  - src\electron\script\setup-win-deps-for-dev.bat
+  # - src\electron\script\setup-win-deps-for-dev.bat
   - ps: >-
       if (Test-Path 'env:RAW_GOMA_AUTH') {
         $env:GOMA_OAUTH2_CONFIG_FILE = "$pwd\.goma_oauth2_config"

@@ -4,26 +4,6 @@ REM Parameters vs_buildtools.exe download link and wsdk version
 SET wsdk10_link=https://go.microsoft.com/fwlink/?linkid=2164145
 SET wsdk=10SDK.20348
 
-REM Check for disk space
-Rem        543210987654321
-Set "Blank=               "
-Set "GB100=   107374182400"
-
-for /f "tokens=2" %%A in (
-  'wmic LogicalDisk Get DeviceID^,FreeSpace ^| find /i "C:"'
-) Do Set "FreeSpace=%Blank%%%A"
-Set "FreeSpace=%FreeSpace:~-15%"
-
-Echo FreeSpace="%FreeSpace%"
-Echo    100 GB="%GB100%"
-
-If "%FreeSpace%" gtr "%GB100%" (
-  Echo yes enough free space
-) else (
-  Echo not enough free space - 100GB
-  exit 5
-)
-
 REM Interpret arguments
 :loop
 IF NOT "%1"=="" (
